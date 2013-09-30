@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/ajitsingh/projects/rails_projects/diary'
+let g:netrw_dirhist_2='/Users/ajitsingh/projects/rails_projects/sub_sequence'
+let g:netrw_dirhist_3='/Users/ajitsingh/Dropbox/os-notes'
+let g:netrw_dirhist_4='/Users/ajitsingh/projects/PAM/merchandise_app'

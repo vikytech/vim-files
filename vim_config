@@ -1,0 +1,120 @@
+filetype plugin on
+syntax on
+set autoindent
+set showmode
+set showcmd
+set hidden
+set title
+set linebreak
+set autoread
+set shell=/bin/sh
+
+"set list
+set ttyfast
+set autowrite
+set splitright
+set cursorline
+colorscheme molokai
+
+"No backup files
+set nobackup
+set nowritebackup
+set noswapfile
+
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+"Key map settings
+"nmap <C-t> :tabnew<CR>
+"nmap <C-w> :tabclose<CR>
+"imap <C-w> <ESC>:tabclose<CR>
+"imap <leader>' ''<ESC>i
+
+"---------------------------------------
+"Selection settings
+imap <C-y> <ESC>yyi
+imap <C-v> <ESC>pi
+imap <C-s> <ESC>xi
+imap <C-d> <ESC>ddi
+"----------------------------------------
+
+"abbrivation in insert mode
+iabbr dbms Database Managment System
+
+execute pathogen#infect()
+let g:Powerline_symbols = 'fancy'
+"call pl#Theme#InsertSegment('ws_maker', 'after', 'lineinfo')
+call Pl#Theme#InsertSegment('new_segment',' where', 'target_segment')
+call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
+set fillchars+=stl:\ ,stlnc:\
+
+set nocompatible   " Disable vi-compatibility
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
+"let g:Powerline_stl_path_style = 'full'
+
+let g:Powerline_symbols_override = {
+        \ 'BRANCH': [0x2213],
+        \ 'LINE': 'L',
+        \ }
+
+nmap <C-f> :FindFile<CR> 
+nmap <C-s> :FindFileSplit<CR> 
+
+"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+set nocompatible
+"filetype off
+Bundle 'gmarik/vundle'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-dispatch'
+
+
+
+"Ruby on Rails
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
+let g:rubycomplete_load_gemfile = 1
+let g:rubycomplete_use_bundler = 1
+:let ruby_operators = 1
+:let ruby_space_errors = 1
+:let ruby_minlines = 100
+
+
+"ruby
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
+
+let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+
+"Test ruby
+let g:rspec_command = "!rspec --drb {spec}"
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_command = "Dispatch rspec {spec}"
+
+"git gutter
+"let g:gitgutter_highlight_lines = 0
+let g:gitgutter_realtime = 0
+set updatetime :1070
+"let g:gitgutter_eager = 0
+"
+"
+ino <c-j> <c-r>=TriggerSnippet()<cr>
+snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
