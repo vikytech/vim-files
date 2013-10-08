@@ -1,13 +1,16 @@
-filetype plugin on
+﻿filetype plugin on
 syntax on
 set autoindent
 set showmode
+set nocp
 set showcmd
 set hidden
 set title
 set linebreak
 set autoread
 set shell=/bin/sh
+set tabstop=4
+set backspace=indent,eol,start
 
 "set list
 set ttyfast
@@ -15,6 +18,7 @@ set autowrite
 set splitright
 set cursorline
 colorscheme molokai
+color skittles_berry
 
 "No backup files
 set nobackup
@@ -25,7 +29,8 @@ filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 "Key map settings
-"nmap <C-t> :tabnew<CR>
+imap <C-s> <ESC>:w<CR>
+imap <C-q> <ESC>:q<CR>
 "nmap <C-w> :tabclose<CR>
 "imap <C-w> <ESC>:tabclose<CR>
 "imap <leader>' ''<ESC>i
@@ -118,3 +123,6 @@ set updatetime :1070
 "
 ino <c-j> <c-r>=TriggerSnippet()<cr>
 snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
+
+
+set list listchars=tab:\|\ ,trail:-,extends:>,precedes:<,eol:¬
